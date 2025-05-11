@@ -1,0 +1,34 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/iahispano/applio.git applio"
+            ]
+        },
+        {
+            "name": "Running 'run-install.bat'",
+              "commands": [
+                { "command": "cd applio" },
+                { "platform": "windows", "command": "run-install.bat" },
+                { "platform": "linux", "command": "run-install.sh" }
+              ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Running 'run-applio.bat'",
+            "catch": "6969",
+              "commands": [
+                { "command": "cd applio" },
+                { "platform": "windows", "command": "run-applio.bat" },
+                { "platform": "linux", "command": "run-applio.sh" }
+              ]
+        }
+    ]
+}

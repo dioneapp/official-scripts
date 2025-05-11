@@ -1,0 +1,31 @@
+# Official Dione scripts
+
+## How to use
+
+1. Install [Dione](https://getdione.app)
+2. Search for a script in [Explore section](https://getdione.app/docs/scripts/exploring#explore-section)
+3. Click on the script you want to install
+4. Click on the `Install` button
+5. Wait for the installation to finish
+6. Click on the `Run` button
+
+## Available scripts
+
+- `browser-use`
+- `bolt`
+- `open-webui`
+- `applio`
+
+## Contributing
+
+We welcome your pull request! Please follow these guidelines to ensure a smooth contribution process:
+
+- Create a folder named after your script.
+- Inside that folder, include a `dione.json` file as described in our [developer documentation](https://getdione.app/docs/developer/making-a-script).
+
+Need more help? Join our [Discord](https://getdione.app/discord) server.
+
+
+## License
+
+This project is licensed under the terms of the license included in the repository.
