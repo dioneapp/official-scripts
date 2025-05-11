@@ -1,0 +1,38 @@
+{
+    "dependencies": {
+      "git": {
+        "version": "latest"
+      },
+      "uv": {
+        "version": "latest"
+      }
+    },
+    "installation": [
+      {
+        "name": "Cloning repository",
+        "commands": [
+          "git clone https://github.com/myshell-ai/MeloTTS.git melotts"
+        ]
+      },
+      {
+        "name": "Installing requirements",
+        "env": "env",
+        "commands": [
+          "cd melotts",
+          "uv pip install -e .",
+          "python -m unidic download"
+        ]
+      }
+    ],
+    "start": [
+      {
+        "name": "Starting MeloTTS",
+        "catch": "8888",
+        "env": "env",
+        "commands": [
+          "cd melotts",
+          "uv python melo/app.py --port 8888"
+        ]
+      }
+    ]
+  }
