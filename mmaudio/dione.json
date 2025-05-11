@@ -1,0 +1,45 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        },
+        "uv": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/hkchengrex/MMAudio.git mmaudio"
+            ]
+        },
+        {
+            "name": "Installing pre-requisites",
+            "env": "env",
+            "commands": [
+                "cd mmaudio",
+                "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 --upgrade"
+            ]
+        },
+        {
+            "name": "Installing dependencies",
+            "env": "env",
+            "commands": [
+                "cd mmaudio",
+                "uv pip install -e ."
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting gradio interface",
+            "catch": "7860",
+            "env": "env",
+            "commands": [
+                "cd mmaudio",
+                "uv python gradio_demo.py"
+            ]
+        }
+    ]
+}
