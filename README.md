@@ -4,17 +4,8 @@
 
 1. Install [Dione](https://getdione.app)
 2. Search for a script in [Explore section](https://getdione.app/docs/scripts/exploring#explore-section)
-3. Click on the script you want to install
-4. Click on the `Install` button
-5. Wait for the installation to finish
-6. Click on the `Run` button
-
-## Available scripts
-
-- `browser-use`
-- `bolt`
-- `open-webui`
-- `applio`
+3. [Install the script](https://getdione.app/docs/scripts/installing)
+4. [Run the script](https://getdione.app/docs/scripts/running)
 
 ## Contributing
 
