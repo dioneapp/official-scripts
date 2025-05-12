@@ -16,7 +16,10 @@
       },
       {
         "name": "Installing requirements",
-        "env": "env",
+        "env": {
+            "name": "env",
+            "version": "3.10"
+        },
         "commands": [
           "cd melotts",
           "uv pip install -e .",
