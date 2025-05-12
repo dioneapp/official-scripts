@@ -34,7 +34,7 @@
         "env": "env",
         "commands": [
           "cd melotts/melo",
-          "uv python app.py --port 8888"
+          "uv run app.py --port 8888"
         ]
       }
     ]
