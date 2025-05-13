@@ -16,7 +16,10 @@
       },
       {
         "name": "Installing requirements",
-        "env": "env",
+        "env": {
+            "name": "env",
+            "version": "3.10"
+        },
         "commands": [
           "cd melotts",
           "uv pip install -e .",
@@ -30,8 +33,8 @@
         "catch": "8888",
         "env": "env",
         "commands": [
-          "cd melotts",
-          "uv python melo/app.py --port 8888"
+          "cd melotts/melo",
+          "uv run app.py --port 8888"
         ]
       }
     ]
