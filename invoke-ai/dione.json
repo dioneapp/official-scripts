@@ -19,12 +19,14 @@
         }
     ],
     "start": [
-        "name": "Starting Invoke AI",
-        "catch": "9090",
-        "env": "env",
-        "commands": [
-            "cd invokeai",
-            "invokeai-web --root ."
-        ]
+        {
+            "name": "Starting Invoke AI",
+            "catch": "9090",
+            "env": "env",
+            "commands": [
+                "cd invokeai",
+                "invokeai-web --root ."
+            ]
+        }
     ]
 }
