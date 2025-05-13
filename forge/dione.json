@@ -7,12 +7,27 @@
     "installation": [
         {
             "name": "Cloning repository",
-            "env": {
-                "name": "env",
-                "python": "3.10"
-            },
             "commands": [
                 "git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git forge"
+            ]
+        },
+        {
+            "name": "Installing Forge",
+            "env": {
+                "name": "env",
+                "version": "3.10"
+            }, 
+            "commands": [
+                "cd forge",
+                "uv pip install pip",
+                {
+                    "platform": "windows",
+                    "command": "webui-user.bat"
+                },
+                {
+                    "platform": "linux",
+                    "command": "webui-user.sh"
+                }
             ]
         }
     ],
@@ -25,11 +40,11 @@
                 "cd forge",
                 {
                     "platform": "windows",
-                    "command": ".//webui-user.bat"
+                    "command": "webui-user.bat"
                 },
                 {
                     "platform": "linux",
-                    "command": "./webui-user.sh"
+                    "command": "webui-user.sh"
                 }
             ]
         }
