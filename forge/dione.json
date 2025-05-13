@@ -7,12 +7,17 @@
     "installation": [
         {
             "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git forge",
+            ]
+        },
+        {
+            "name": "Installing Forge",
             "env": {
                 "name": "env",
                 "python": "3.10"
-            },
+            }, 
             "commands": [
-                "git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git forge",
                 "cd forge",
                 {
                     "platform": "windows",
