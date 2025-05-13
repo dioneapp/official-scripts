@@ -21,11 +21,11 @@
                 "cd forge",
                 {
                     "platform": "windows",
-                    "command": ".//webui-user.bat"
+                    "command": "webui-user.bat"
                 },
                 {
                     "platform": "linux",
-                    "command": "./webui-user.sh"
+                    "command": "webui-user.sh"
                 }
             ]
         }
@@ -39,11 +39,11 @@
                 "cd forge",
                 {
                     "platform": "windows",
-                    "command": ".//webui-user.bat"
+                    "command": "webui-user.bat"
                 },
                 {
                     "platform": "linux",
-                    "command": "./webui-user.sh"
+                    "command": "webui-user.sh"
                 }
             ]
         }
