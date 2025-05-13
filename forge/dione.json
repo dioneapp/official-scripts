@@ -8,7 +8,7 @@
         {
             "name": "Cloning repository",
             "commands": [
-                "git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git forge",
+                "git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git forge"
             ]
         },
         {
