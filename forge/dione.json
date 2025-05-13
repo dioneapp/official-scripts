@@ -15,10 +15,11 @@
             "name": "Installing Forge",
             "env": {
                 "name": "env",
-                "python": "3.10"
+                "version": "3.10"
             }, 
             "commands": [
                 "cd forge",
+                "uv pip install pip",
                 {
                     "platform": "windows",
                     "command": "webui-user.bat"
