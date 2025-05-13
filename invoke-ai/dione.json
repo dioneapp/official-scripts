@@ -1,0 +1,29 @@
+{
+    "dependencies": {
+        "uv": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Installing dependencies",
+            "env": {
+                "name": "env",
+                "version": "3.12"
+            },
+            "commands": [
+                "cd invokeai",
+                "uv pip install invokeai --python 3.12 --python-preference only-managed --force-reinstall"
+            ]
+        }
+    ],
+    "start": {
+        "name": "Starting Invoke AI",
+        "catch": "9090",
+        "env": "env",
+        "commands": [
+            "cd invokeai",
+            "invokeai-web --root ."
+        ]
+    }
+}
