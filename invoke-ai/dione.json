@@ -12,6 +12,7 @@
                 "version": "3.12"
             },
             "commands": [
+                "mkdir invokeai",
                 "cd invokeai",
                 "uv pip install invokeai --python 3.12 --python-preference only-managed --force-reinstall"
             ]
