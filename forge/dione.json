@@ -1,0 +1,37 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "env": {
+                "name": "env",
+                "python": "3.10"
+            },
+            "commands": [
+                "git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git forge"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting forge",
+            "catch": "7860",
+            "env": "env",
+            "commands": [
+                "cd forge",
+                {
+                    "platform": "windows",
+                    "command": ".//webui-user.bat"
+                },
+                {
+                    "platform": "linux",
+                    "command": "./webui-user.sh"
+                }
+            ]
+        }
+    ]
+}
