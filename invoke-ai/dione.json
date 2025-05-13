@@ -18,7 +18,7 @@
             ]
         }
     ],
-    "start": {
+    "start": [
         "name": "Starting Invoke AI",
         "catch": "9090",
         "env": "env",
@@ -26,5 +26,5 @@
             "cd invokeai",
             "invokeai-web --root ."
         ]
-    }
+    ]
 }
