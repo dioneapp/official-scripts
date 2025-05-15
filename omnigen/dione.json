@@ -31,7 +31,7 @@
             "env": "env",
             "commands": [
                 "cd omnigen",
-                "uv python app.py"
+                "uv run app.py"
             ]
         }
     ]
