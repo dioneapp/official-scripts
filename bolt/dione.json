@@ -5,20 +5,23 @@
         },
         "node": {
             "version": "latest"
+        },
+        "pnpm": {
+            "version": "latest"
         }
     },
     "installation": [
         {
             "name": "Cloning repository",
             "commands": [
-                "git clone https://github.com/stackblitz-labs/bolt.diy bolt"
+                "git clone -b stable https://github.com/stackblitz-labs/bolt.diy bolt"
             ]
         },
         {
             "name": "Installing dependencies",
             "commands": [
                 "cd bolt",
-                "npm install"
+                "pnpm install"
             ]
         }
     ],
@@ -28,7 +31,7 @@
             "catch": "5123",
             "commands": [
                 "cd bolt",
-                "npm run dev"
+                "pnpm run dev"
             ]
         }
     ]
