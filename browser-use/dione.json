@@ -16,7 +16,10 @@
       },
       {
         "name": "Installing requirements",
-        "env": "env",
+        "env": {
+            "name": "env",
+            "version": "3.12"
+        },
         "commands": [
           "cd app",
           "uv pip install -r requirements.txt"
