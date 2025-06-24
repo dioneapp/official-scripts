@@ -29,10 +29,15 @@
         {
             "name": "Starting FaceFusion",
             "catch": "7865",
-              "commands": [
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.12"
+            },
+            "commands": [
                 "cd facefusion",
                 "python facefusion.py run --open-browser"
-              ]
+            ]
         }
     ]
 }
