@@ -1,0 +1,37 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        },
+        "conda": {
+            "version": "latest"
+        },
+        "ffmpeg": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Installing FaceFusion",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.12"
+            },
+            "commands": [
+                "git clone https://github.com/facefusion/facefusion facefusion",
+                "cd facefusion",
+                "python install.py --onnxruntime default"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting FaceFusion",
+            "catch": "7865",
+              "commands": [
+                "python facefusion.py run --open-browser"
+              ]
+        }
+    ]
+}
