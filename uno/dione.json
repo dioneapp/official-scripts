@@ -27,7 +27,7 @@
     "start": [
         {
             "name": "Running UNO",
-            "catch": "6969",
+            "catch": "7860",
             "env": {
                 "name": "env",
                 "type": "uv",
