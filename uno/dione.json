@@ -1,0 +1,42 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/bytedance/UNO.git uno"
+            ]
+        },
+        {
+            "name": "Installing dependencies",
+            "env": {
+                "name": "env",
+                "type": "uv",
+                "version": "3.12"
+            },
+            "commands": [
+                "cd uno",
+                "uv pip install -e ."
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Running UNO",
+            "catch": "6969",
+            "env": {
+                "name": "env",
+                "type": "uv",
+                "version": "3.12"
+            },
+              "commands": [
+                "cd uno",
+                "uv run app.py"
+              ]
+        }
+    ]
+}
