@@ -20,7 +20,7 @@
             },
             "commands": [
                 "cd wan2gp",
-                "pip install torch==2.7.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/test/cu124",
+                "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/test/cu124",
                 "pip install -r requirements.txt"
             ]
         }
