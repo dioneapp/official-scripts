@@ -20,6 +20,7 @@
             },
             "commands": [
                 "cd uno",
+                "pip install torch torchvision torchaudio",
                 "pip install -e ."
             ]
         }
