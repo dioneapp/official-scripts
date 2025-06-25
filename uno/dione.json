@@ -15,12 +15,12 @@
             "name": "Installing dependencies",
             "env": {
                 "name": "env",
-                "type": "uv",
+                "type": "conda",
                 "version": "3.10"
             },
             "commands": [
                 "cd uno",
-                "pip install -r requirements.txt"
+                "pip install -e ."
             ]
         }
     ],
@@ -30,12 +30,12 @@
             "catch": "7860",
             "env": {
                 "name": "env",
-                "type": "uv",
+                "type": "conda",
                 "version": "3.10"
             },
               "commands": [
                 "cd uno",
-                "uv run app.py"
+                "python app.py"
               ]
         }
     ]
