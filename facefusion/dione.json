@@ -3,9 +3,6 @@
         "git": {
             "version": "latest"
         },
-        "conda": {
-            "version": "latest"
-        },
         "ffmpeg": {
             "version": "latest"
         }
@@ -15,13 +12,13 @@
             "name": "Installing FaceFusion",
             "env": {
                 "name": "env",
-                "type": "conda",
-                "version": "3.12"
+                "type": "uv",
+                "python": "3.12"
             },
             "commands": [
                 "git clone https://github.com/facefusion/facefusion facefusion",
                 "cd facefusion",
-                "python install.py --onnxruntime default"
+                "uv run install.py --onnxruntime default"
             ]
         }
     ],
@@ -31,12 +28,12 @@
             "catch": "7865",
             "env": {
                 "name": "env",
-                "type": "conda",
-                "version": "3.12"
+                "type": "uv",
+                "python": "3.12"
             },
             "commands": [
                 "cd facefusion",
-                "python facefusion.py run --open-browser"
+                "uv run facefusion.py run --open-browser"
             ]
         }
     ]
