@@ -1,0 +1,41 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        },
+        "build_tools": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/pq-yang/MatAnyone matanyone"
+            ]
+        },
+        {
+            "name": "Installing dependencies",
+            "env": {
+                "name": "env",
+                "type": "uv",
+                "version": "3.8"
+            },
+            "commands": [
+                "cd matanyone",
+                "uv pip install -e .",
+                "uv pip install -r hugging_face/requirements.txt"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Running 'run-applio.bat'",
+            "catch": "6969",
+            "commands": [
+                "cd matanyone/hugging_face",
+                "uv run app.py"
+            ]
+        }
+    ]
+}
