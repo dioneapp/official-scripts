@@ -20,6 +20,7 @@
             "commands": [
                 "cd forge",
                 "uv pip install pip",
+                "set no_proxy=localhost,127.0.0.1,::1",
                 {
                     "platform": "windows",
                     "command": "webui-user.bat"
@@ -38,6 +39,7 @@
             "env": "env",
             "commands": [
                 "cd forge",
+                "set no_proxy=localhost,127.0.0.1,::1",
                 {
                     "platform": "windows",
                     "command": "webui-user.bat"
