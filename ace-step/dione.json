@@ -9,14 +9,14 @@
             "name": "Installing ace-step",
             "env": {
                 "name": "env",
-                "type": "conda",
+                "type": "uv",
                 "version": "3.10"
             },
             "commands": [
                 "git clone https://github.com/ace-step/ACE-Step.git ace-step",
                 "cd ace-step",
-                "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126",
-                "pip install -e ."
+                "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126",
+                "uv pip install -e ."
             ]
         }
     ],
@@ -26,10 +26,11 @@
             "catch": "7865",
             "env": {
                 "name": "env",
-                "type": "conda",
+                "type": "uv",
                 "version": "3.10"
             },
             "commands": [
+                "cd ace-step",
                 "acestep --port 7865"
             ]
         }
