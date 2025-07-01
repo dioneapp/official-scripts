@@ -1,0 +1,37 @@
+{
+  "dependencies": {
+    "git": {
+      "version": "latest"
+    },
+    "uv": {
+      "version": "latest"
+    }
+  },
+  "installation": [
+    {
+      "name": "Installing FLUX.1-Kontext-Dev-SUP3R",
+      "env": {
+        "name": "env",
+        "version": "3.10"
+      },
+      "commands": [
+        "git clone https://github.com/SUP3RMASS1VE/FLUX.1-Kontext-Dev-SUP3R.git FLUX.1-Kontext-Dev-SUP3R",
+        "cd FLUX.1-Kontext-Dev-SUP3R",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install setuptools",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install -r requirements.txt"
+      ]
+    }
+  ],
+  "start": [
+    {
+      "name": "Starting FLUX.1 Kontext Dev SUP3R",
+      "catch": "7860",
+      "env": "env",
+      "commands": [
+        "cd FLUX.1-Kontext-Dev-SUP3R",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && python app.py"
+      ]
+    }
+  ]
+} 
