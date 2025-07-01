@@ -1,0 +1,92 @@
+{
+  "dependencies": {
+    "git": {
+      "version": "latest"
+    }
+  },
+  "installation": [
+    {
+      "name": "Cloning repository",
+      "commands": [
+        "git clone https://github.com/SUP3RMASS1VE/Ultimate-TTS-Studio-SUP3R-Edition.git Ultimate-TTS-Studio-SUP3R-Edition"
+      ]
+    },
+    {
+      "name": "Installing espeak-ng",
+      "commands": [
+        "cd Ultimate-TTS-Studio-SUP3R-Edition",
+        { "platform": "windows", "command": "powershell -Command \"$job = Start-Job -ScriptBlock { winget install --id=eSpeak-NG.eSpeak-NG -e --silent --accept-source-agreements --accept-package-agreements --force --disable-interactivity }; Wait-Job $job -Timeout 60; Remove-Job $job -Force; Write-Host 'espeak-ng installation completed'\"" }
+      ]
+    },
+    {
+      "name": "Creating conda environment",
+      "env": {
+        "name": "ultimate-tts",
+        "type": "conda",
+        "version": "3.10"
+      },
+      "commands": [
+        "cd Ultimate-TTS-Studio-SUP3R-Edition",
+        "conda install -c conda-forge pynini==2.1.6 -y"
+      ]
+    },
+    {
+      "name": "Installing PyTorch with CUDA support",
+      "env": {
+        "name": "ultimate-tts",
+        "type": "conda"
+      },
+      "commands": [
+        "cd Ultimate-TTS-Studio-SUP3R-Edition",
+        "set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128"
+      ]
+    },
+    {
+      "name": "Installing requirements",
+      "env": {
+        "name": "ultimate-tts",
+        "type": "conda"
+      },
+      "commands": [
+        "cd Ultimate-TTS-Studio-SUP3R-Edition",
+        "set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && pip install -r requirements.txt"
+      ]
+    },
+    {
+      "name": "Installing WeTextProcessing",
+      "env": {
+        "name": "ultimate-tts",
+        "type": "conda"
+      },
+      "commands": [
+        "cd Ultimate-TTS-Studio-SUP3R-Edition",
+        "set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && pip install WeTextProcessing --no-deps"
+      ]
+    },
+    {
+      "name": "Downloading Fish Speech model",
+      "env": {
+        "name": "ultimate-tts",
+        "type": "conda"
+      },
+      "commands": [
+        "cd Ultimate-TTS-Studio-SUP3R-Edition",
+        "set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && huggingface-cli download cocktailpeanut/oa --local-dir ./checkpoints/openaudio-s1-mini"
+      ]
+    }
+  ],
+  "start": [
+    {
+      "name": "Starting Ultimate TTS Studio",
+      "catch": "7860",
+      "env": {
+        "name": "ultimate-tts",
+        "type": "conda"
+      },
+      "commands": [
+        "cd Ultimate-TTS-Studio-SUP3R-Edition",
+        "set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && python launch.py"
+      ]
+    }
+  ]
+} 
