@@ -1,0 +1,43 @@
+{
+  "dependencies": {
+    "git": {
+      "version": "latest"
+    },
+    "uv": {
+      "version": "latest"
+    }
+  },
+  "installation": [
+    {
+      "name": "Cloning RuinedFooocus repository",
+      "commands": [
+        "git clone https://github.com/runew0lf/RuinedFooocus.git RuinedFooocus"
+      ]
+    },
+    {
+      "name": "Installing all requirements and dependencies",
+      "env": {
+        "name": "env",
+        "version": "3.10"
+      },
+      "commands": [
+        "cd RuinedFooocus",
+        "uv pip install pip setuptools wheel",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && uv pip install -r pip/modules.txt",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && uv pip install -r requirements_versions.txt"
+      ]
+    }
+  ],
+  "start": [
+    {
+      "name": "Starting RuinedFooocus",
+      "catch": "7860",
+      "env": "env",
+      "commands": [
+        "cd RuinedFooocus",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && python launch.py --listen"
+      ]
+    }
+  ]
+} 
