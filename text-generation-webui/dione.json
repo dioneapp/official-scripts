@@ -1,0 +1,62 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Installing torch",
+            "env": {
+                "name": "env",
+                "version": "3.11"
+            },
+            "commands": [
+                {
+                    "platform": "windows",
+                    "command": "uv pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124"
+                },
+                {
+                    "platform": "linux",
+                    "command": "uv pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124"
+                },
+                {
+                    "platform": "macos",
+                    "command": "uv pip install torch==2.6.0"
+                }
+            ]
+        }, 
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/oobabooga/text-generation-webui.git app"
+            ]
+        },
+        {
+            "name": "Installing dependencies",
+            "env": "env",
+            "commands": [
+                "cd app",
+                {
+                    "platform": "windows",
+                    "command": "uv pip install -r requirements/full/requirements.txt"
+                },
+                {
+                    "platform": "macos",
+                    "command": "uv pip install -r requirements/full/requirements_apple_intel.txt"
+                }
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting app",
+            "catch": "7860",
+            "env": "env",
+            "commands": [
+                "cd app",
+                "uv run server.py"
+            ]
+        }
+    ]
+}
