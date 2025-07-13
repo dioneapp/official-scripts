@@ -1,0 +1,42 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        },
+        "ffmpeg": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Installing streamsnap",
+            "commands": [
+                "git clone https://github.com/TheAwaken1/StreamSnap.git streamsnap",
+                "cd streamsnap"
+            ]
+        },
+        {
+            "name": "Installing dependencies",
+            "env": {
+                "name": "env",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd streamsnap",
+                "uv pip install gradio==5.35.0",
+                "uv pip install -r requirements.txt"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting streamsnap",
+            "catch": "7860",
+            "env": "env",
+            "commands": [
+                "cd streamsnap",
+                "uv run app.py"
+            ]
+        }
+    ]
+}
