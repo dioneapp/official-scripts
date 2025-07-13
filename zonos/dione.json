@@ -1,0 +1,54 @@
+{
+    "dependencies": {
+      "git": {
+        "version": "latest"
+      },
+      "uv": {
+        "version": "latest"
+      }
+    },
+    "installation": [
+      {
+        "name": "Cloning Zonos repository",
+        "commands": [
+          "git clone https://github.com/Zyphra/Zonos.git zonos"
+        ]
+      },
+      {
+        "name": "Installing eSpeak-NG system dependency",
+        "commands": [
+          {
+            "platform": "linux",
+            "command": "sudo apt update && sudo apt install -y espeak-ng"
+          },
+          {
+            "platform": "mac",
+            "command": "brew install espeak-ng"
+          }
+        ]
+      },
+      {
+        "name": "Installing Python requirements with uv",
+        "env": {
+          "name": "zonos_env",
+          "version": "3.10",
+          "type": "uv"
+        },
+        "commands": [
+          "cd zonos",
+          "uv pip install -e ."
+        ]
+      }
+    ],
+    "start": [
+      {
+        "name": "Starting Zonos Gradio interface",
+        "catch": "7860",
+        "env": "zonos_env",
+        "commands": [
+          "cd zonos",
+          "uv run gradio_interface.py"
+        ]
+      }
+    ]
+}
