@@ -1,0 +1,41 @@
+{
+    "dependencies": {
+      "git": {
+        "version": "latest"
+      },
+      "uv": {
+        "version": "latest"
+      }
+    },
+    "installation": [
+      {
+        "name": "Cloning stable-audio-tools repository",
+        "commands": [
+          "git clone https://github.com/Stability-AI/stable-audio-tools.git stable-audio-tools"
+        ]
+      },
+      {
+        "name": "Installing requirements and setting up environment",
+        "env": {
+          "name": "env",
+          "type": "uv",
+          "version": "3.10"
+        },
+        "commands": [
+          "cd stable-audio-tools",
+          "uv pip install ."
+        ]
+      }
+    ],
+    "start": [
+      {
+        "name": "Starting Stable Audio Tools Gradio UI",
+        "catch": "7860",
+        "env": "env",
+        "commands": [
+          "cd stable-audio-tools",
+          "uv run run_gradio.py --pretrained-name cocktailpeanut/oiduaelbats --share"
+        ]
+      }
+    ]
+  }
