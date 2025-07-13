@@ -1,0 +1,39 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git app",
+                "cd app"
+            ]
+        }, 
+        {
+            "name": "Installing dependencies",
+            "env": {
+                "name": "env",
+                "version": "3.10.6"
+            },
+            "commands": [
+                "cd app",
+                "uv pip install --upgrade pip",
+                "webui-user.bat"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting stable-diffusion-webui",
+            "catch": "7861",
+            "env": "env",
+            "commands": [
+                "cd app",
+                "webui-user.bat"
+            ]
+        }
+    ]
+}
