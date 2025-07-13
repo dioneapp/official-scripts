@@ -1,0 +1,37 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone --recursive https://github.com/bmaltais/kohya_ss.git kohya"
+            ]
+        },
+        {
+            "name": "Starting GUI",
+            "env": {
+                "name": "env",
+                "version": "3.11.9"
+            },
+            "commands": [
+                "cd kohya",
+                "gui-uv.bat --server_port 7860"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting Kohya",
+            "catch": "7860",
+            "env": "env",
+            "commands": [
+               "cd kohya",
+               "gui-uv.bat --server_port 7860"
+            ]
+        }
+    ]
+}
