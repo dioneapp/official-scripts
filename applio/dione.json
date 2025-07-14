@@ -1,4 +1,8 @@
 {
+    "requirements": {
+        "gpus": ["nvidia", "amd"],
+        "os": ["windows","linux"]
+    },
     "dependencies": {
         "git": {
             "version": "latest"
