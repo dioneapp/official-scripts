@@ -1,0 +1,40 @@
+{
+  "dependencies": {
+    "git": {
+      "version": "latest"
+    },
+    "uv": {
+      "version": "latest"
+    }
+  },
+  "installation": [
+    {
+      "name": "Cloning F5-TTS repository",
+      "commands": ["git clone https://github.com/SWivid/F5-TTS.git f5-tts"]
+    },
+    {
+      "name": "Setting up Python environment and installing F5-TTS",
+      "env": {
+        "name": "f5-tts-env",
+        "version": "3.10",
+        "type": "uv"
+      },
+      "commands": [
+        "cd f5-tts",
+        "uv pip install torch torchaudio",
+        "uv pip install -e ."
+      ]
+    }
+  ],
+  "start": [
+    {
+      "name": "Starting F5-TTS Gradio interface",
+      "catch": "7860",
+      "env": "f5-tts-env",
+      "commands": [
+        "cd f5-tts",
+        "f5-tts_infer-gradio --port 7860"
+      ]
+    }
+  ]
+}
