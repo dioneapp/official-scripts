@@ -33,7 +33,7 @@
         "env": "env",
         "commands": [
           "cd app",
-          "python webui.py --ip 127.0.0.1 --port 7788"
+          "uv run webui.py --ip 127.0.0.1 --port 7788"
         ]
       }
     ]
