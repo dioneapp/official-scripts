@@ -1,4 +1,7 @@
 {
+  "requirements": {
+    "os": ["windows"]
+    },
   "dependencies": {
     "git": {
       "version": "latest"
