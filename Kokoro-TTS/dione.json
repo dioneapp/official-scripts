@@ -1,0 +1,52 @@
+{
+  "dependencies": {
+    "git": {
+      "version": "latest"
+    },
+    "uv": {
+      "version": "latest"
+    }
+  },
+  "installation": [
+    {
+      "name": "Cloning Kokoro TTS Local repository",
+      "commands": ["git clone https://github.com/SUP3RMASS1VE/Kokoro-TTS-Local-v1.0.git Kokoro-TTS-Local-v1.0"]
+    },
+    {
+      "name": "Installing espeak-ng for phonemization",
+      "commands": [
+        {
+          "platform": "windows",
+          "command": "powershell -Command \"winget install --id=eSpeak-NG.eSpeak-NG -e --silent --accept-source-agreements --accept-package-agreements --force --disable-interactivity\""
+        }
+      ]
+    },
+    {
+      "name": "Setting up Python environment and installing Kokoro TTS",
+      "env": {
+        "name": "kokoro-env",
+        "version": "3.10",
+        "type": "uv"
+      },
+      "commands": [
+        "cd Kokoro-TTS-Local-v1.0",
+        "uv pip install pip",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install phonemizer transformers scipy munch soundfile sounddevice gradio numpy==1.26.4",
+        "if exist requirements.txt (set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install -r requirements.txt)",
+        "if exist download_model.py (set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && python download_model.py)"
+      ]
+    }
+  ],
+  "start": [
+    {
+      "name": "Starting Kokoro TTS Local",
+      "catch": "7860",
+      "env": "kokoro-env",
+      "commands": [
+        "cd Kokoro-TTS-Local-v1.0",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && python app.py"
+      ]
+    }
+  ]
+} 
