@@ -1,0 +1,25 @@
+{
+    "dependencies": {
+        "node": { "version": "latest"}
+    },
+    "installation": [
+        {
+            "name": "Installing n8n",
+            "commands": [
+                "mkdir app",
+                "cd app",
+                "npm install -g n8n"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting n8n",
+            "catch": "5678",
+            "commands": [
+                "cd app",
+                "n8n start"
+            ]
+        }
+    ]
+}
