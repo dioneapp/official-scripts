@@ -1,7 +1,8 @@
 {
     "requirements": {
-      "os": ["windows"]
-      },
+      "os": ["windows"],
+      "gpus": ["nvidia"]
+    },
     "dependencies": {
       "git": {
         "version": "latest"
