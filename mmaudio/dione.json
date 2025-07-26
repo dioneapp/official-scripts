@@ -38,7 +38,7 @@
             "env": "env",
             "commands": [
                 "cd mmaudio",
-                "uv run gradio_demo.py"
+                "python gradio_demo.py"
             ]
         }
     ]
