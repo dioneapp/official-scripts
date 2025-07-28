@@ -36,7 +36,7 @@
             },
             "commands": [
                 "cd facefusion",
-                "python facefusion.py run --open-browser"
+                "python facefusion.py run"
             ]
         }
     ]
