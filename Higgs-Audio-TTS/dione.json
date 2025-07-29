@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "git": { "version": "latest" },
+    "uv": { "version": "latest" }
+  },
+  "installation": [
+    {
+      "name": "Cloning Higgs-Audio TTS repository",
+      "commands": [
+        "git clone https://github.com/SUP3RMASS1VE/Higgs-Audio-Text-to-Speech.git Higgs-Audio-TTS"
+      ]
+    },
+    {
+      "name": "Setting up Python environment and installing dependencies",
+      "env": { "name": "higgs-env", "version": "3.10", "type": "uv" },
+      "commands": [
+        "cd Higgs-Audio-TTS",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install pip",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install -r requirements.txt"
+      ]
+    }
+  ],
+  "start": [
+    {
+      "name": "Starting Higgs-Audio TTS",
+      "catch": "7860",
+      "env": "higgs-env",
+      "commands": [
+        "cd Higgs-Audio-TTS",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && python app.py --port 7860"
+      ]
+    }
+  ]
+} 
