@@ -1,0 +1,36 @@
+{
+    "dependencies": {
+        "git": { "version": "latest"}
+    },
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/jhj0517/Whisper-WebUI.git whisper"
+            ]
+        },
+        {
+            "name": "Creating environment",
+            "env": {
+                "name": "env",
+                "version": "3.11"
+            },
+            "commands": [
+                "cd whisper",
+                "uv pip install -U pip",
+                "uv pip install -r requirements.txt"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting WebUI",
+            "catch": "7860",
+            "env": "env",
+            "commands": [
+                "cd whisper",
+                "python app.py"
+            ]
+        }
+    ]
+}
