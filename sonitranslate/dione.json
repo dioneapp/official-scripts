@@ -1,0 +1,55 @@
+{
+    "dependencies": {
+        "git": { "version": "latest" },
+        "ffmpeg": { "version": "latest" }
+    },
+    "installation": [
+        {
+            "name": "Creating environment",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.10"
+            },
+            "commands": [
+                "python -m pip install --upgrade pip setuptools wheel",
+                "conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia --yes"
+            ]
+        },
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/r3gm/SoniTranslate.git sonitranslate"
+            ]
+        },
+        {
+            "name": "Installing required packages",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd sonitranslate",
+                "pip install -r requirements_base.txt -v",
+                "pip install -r requirements_extra.txt -v",
+                "pip install onnxruntime-gpu"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting SoniTranslate",
+            "catch": "7860",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd sonitranslate",
+                "python app_rvc.py"
+            ]
+        }
+    ]
+}
