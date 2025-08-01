@@ -41,7 +41,7 @@
     "start": [
       {
         "name": "Starting Applio",
-        "catch": "7860",
+        "catch": "6969",
         "env": "env",
         "commands": [
           "cd applio",
