@@ -1,37 +1,52 @@
 {
     "requirements": {
-        "os": ["windows","linux"]
+      "gpus": [
+        "nvidia"
+      ],
+      "os": [
+        "windows",
+        "linux",
+        "macos"
+      ]
     },
     "dependencies": {
-        "git": {
-            "version": "latest"
-        }
+      "git": {
+        "version": "latest"
+      },
+      "uv": {
+        "version": "latest"
+      }
     },
     "installation": [
-        {
-            "name": "Cloning repository",
-            "commands": [
-                "git clone https://github.com/iahispano/applio.git applio"
-            ]
+      {
+        "name": "Cloning Applio repository",
+        "commands": [
+          "git clone https://github.com/iahispano/applio.git applio"
+        ]
+      },
+      {
+        "name": "Creating environment and installing dependencies",
+        "env": {
+          "name": "env",
+          "version": "3.10",
+          "type": "uv"
         },
-        {
-            "name": "Running 'run-install.bat'",
-              "commands": [
-                { "command": "cd applio" },
-                { "platform": "windows", "command": "run-install.bat" },
-                { "platform": "linux", "command": "run-install.sh" }
-              ]
-        }
+        "commands": [
+          "cd applio",
+          "uv pip install -r requirements.txt",
+          "uv pip install torch==2.7.1 torchvision torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu128"
+        ]
+      }
     ],
     "start": [
-        {
-            "name": "Running 'run-applio.bat'",
-            "catch": "6969",
-              "commands": [
-                { "command": "cd applio" },
-                { "platform": "windows", "command": "run-applio.bat" },
-                { "platform": "linux", "command": "run-applio.sh" }
-              ]
-        }
+      {
+        "name": "Starting Applio",
+        "catch": "7860",
+        "env": "env",
+        "commands": [
+          "cd applio",
+          "uv run python app.py"
+        ]
+      }
     ]
-}
+  }
