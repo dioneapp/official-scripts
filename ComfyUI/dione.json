@@ -1,0 +1,45 @@
+{
+  "dependencies": {
+    "git": { "version": "latest" },
+    "uv": { "version": "latest" }
+  },
+  
+  "installation": [
+    {
+      "name": "Cloning ComfyUI repository",
+      "commands": [
+        "git clone https://github.com/comfyanonymous/ComfyUI.git ComfyUI"
+      ]
+    },
+    {
+      "name": "Installing PyTorch and Python dependencies",
+      "env": { "name": ".venv", "version": "3.10" },
+      "commands": [
+        "cd ComfyUI",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install pip",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install -r requirements.txt",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install GitPython pyyaml"
+      ]
+    },
+    {
+      "name": "Installing ComfyUI Manager",
+      "commands": [
+        "cd ComfyUI/custom_nodes",
+        "git clone https://github.com/ltdrdata/ComfyUI-Manager.git"
+      ]
+    }
+  ],
+  
+  "start": [
+    {
+      "name": "Starting ComfyUI",
+      "catch": "8188",
+      "env": ".venv",
+      "commands": [
+        "cd ComfyUI",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && python main.py --listen 0.0.0.0 --port 8188 --disable-auto-launch"
+      ]
+    }
+  ]
+} 
