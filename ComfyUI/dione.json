@@ -38,8 +38,9 @@
       "env": ".venv",
       "commands": [
         "cd ComfyUI",
-        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && python main.py --listen 0.0.0.0 --port 8188 --disable-auto-launch"
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && python main.py --listen 127.0.0.1 --port 8188 --disable-auto-launch"
       ]
     }
   ]
+
 } 
