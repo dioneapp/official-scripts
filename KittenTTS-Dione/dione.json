@@ -1,0 +1,67 @@
+{
+  "requirements": {
+    "os": ["windows", "linux", "mac"]
+  },
+  "dependencies": {
+    "git": { "version": "latest" },
+    "uv": { "version": "latest" }
+  },
+  "installation": [
+    {
+      "name": "Downloading required files",
+      "commands": [
+        "mkdir kittentts",
+        "cd kittentts",
+        {
+          "platform": "windows",
+          "command": "curl -o app.py https://raw.githubusercontent.com/PierrunoYT/KittenTTS-Pinokio/main/app.py && curl -o requirements.txt https://raw.githubusercontent.com/PierrunoYT/KittenTTS-Pinokio/main/requirements.txt"
+        },
+        {
+          "platform": "linux",
+          "command": "wget https://raw.githubusercontent.com/PierrunoYT/KittenTTS-Pinokio/main/app.py && wget https://raw.githubusercontent.com/PierrunoYT/KittenTTS-Pinokio/main/requirements.txt"
+        },
+        {
+          "platform": "mac", 
+          "command": "curl -o app.py https://raw.githubusercontent.com/PierrunoYT/KittenTTS-Pinokio/main/app.py && curl -o requirements.txt https://raw.githubusercontent.com/PierrunoYT/KittenTTS-Pinokio/main/requirements.txt"
+        }
+      ]
+    },
+    {
+      "name": "Installing PyTorch",
+      "env": { "name": "env", "version": "3.10", "type": "uv" },
+      "commands": [
+        "cd kittentts",
+        {
+          "platform": "windows",
+          "command": "uv pip install torch torchvision torchaudio numpy==1.26.4"
+        },
+        {
+          "platform": "linux", 
+          "command": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu"
+        },
+        {
+          "platform": "mac",
+          "command": "uv pip install torch torchvision torchaudio"
+        }
+      ]
+    },
+    {
+      "name": "Installing requirements",
+      "env": { "name": "env", "version": "3.10", "type": "uv" },
+      "commands": ["cd kittentts", "uv pip install -r requirements.txt"]
+    },
+    {
+      "name": "Testing installation",
+      "env": "env",
+      "commands": ["cd kittentts", "python -c \"from kittentts import KittenTTS; print('KittenTTS installed successfully!')\""]
+    }
+  ],
+  "start": [
+    {
+      "name": "Starting KittenTTS",
+      "catch": "7860",
+      "env": "env",
+      "commands": ["cd kittentts", "python app.py"]
+    }
+  ]
+}
