@@ -1,0 +1,42 @@
+{
+  "requirements": {
+    "os": ["windows", "linux", "mac"]
+  },
+  "dependencies": {
+    "git": { "version": "latest" },
+    "uv": { "version": "latest" }
+  },
+  "installation": [
+    {
+      "name": "Cloning ZipVoice-UI repository",
+      "commands": [
+        "git clone https://github.com/SUP3RMASS1VE/ZipVoice-UI.git ZipVoice-UI"
+      ]
+    },
+    {
+      "name": "Installing PyTorch and project requirements",
+      "env": { "name": "zipvoice", "version": "3.10", "type": "uv" },
+      "commands": [
+        "cd ZipVoice-UI",
+        "uv pip install pip",
+        { "platform": "windows", "command": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128" },
+        { "platform": "linux",   "command": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128" },
+        { "platform": "mac",     "command": "uv pip install torch torchvision torchaudio" },
+        "uv pip install -r requirements.txt"
+      ]
+    }
+  ],
+  "start": [
+    {
+      "name": "Starting ZipVoice-UI",
+      "catch": "7860",
+      "env": "zipvoice",
+      "commands": [
+        "cd ZipVoice-UI",
+        "python zipvoice/bin/gradio_app.py"
+      ]
+    }
+  ]
+}
+
+
