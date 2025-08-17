@@ -1,4 +1,8 @@
 {
+    "requirements": {
+        "gpus": ["nvidia", "amd"],
+        "os": ["windows", "linux"]
+    },
     "dependencies": {
         "git": {
             "version": "latest"
@@ -21,7 +25,10 @@
             "commands": [
                 "git clone https://github.com/facefusion/facefusion facefusion",
                 "cd facefusion",
-                "python install.py --onnxruntime default"
+                { "platform": "linux", "gpus": "amd", "command": "python install.py --onnxruntime rocm" },
+                { "platform": "windows", "gpus": "amd", "command": "python install.py --onnxruntime directml" },
+                { "platform": "windows", "gpus": "nvidia", "command": "python install.py --onnxruntime cuda" },
+                { "platform": "linux", "gpus": "nvidia", "command": "python install.py --onnxruntime cuda" }
             ]
         }
     ],
