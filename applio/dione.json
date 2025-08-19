@@ -1,13 +1,7 @@
 {
     "requirements": {
-      "gpus": [
-        "nvidia"
-      ],
-      "os": [
-        "windows",
-        "linux",
-        "macos"
-      ]
+      "gpus": [],
+      "os": []
     },
     "dependencies": {
       "git": {
@@ -28,7 +22,7 @@
         "name": "Creating environment and installing dependencies",
         "env": {
           "name": "env",
-          "version": "3.10",
+          "version": "3.11",
           "type": "uv"
         },
         "commands": [
