@@ -1,0 +1,40 @@
+
+{
+	"requirements": {
+		"gpus": ["nvidia"],
+		"os": ["linux", "windows"]
+	},
+	"dependencies": {
+		"git": { "version": "latest" },
+		"uv": { "version": "latest" }
+	},
+	"installation": [
+		{
+			"name": "Cloning repository",
+			"commands": [
+				"git clone https://huggingface.co/spaces/jasperai/LBM_relighting.git lbm-relighting"
+			]
+		},
+		{
+			"name": "Creating environment and installing dependencies",
+			"env": { "name": "env", "version": "3.11", "type": "uv" },
+			"commands": [
+				"cd lbm-relighting",
+				"uv pip install --upgrade pip setuptools wheel",
+				"uv pip install -r requirements.txt"
+			]
+		}
+	],
+	"start": [
+		{
+			"name": "Starting LBM Relighting",
+			"catch": "7860",
+			"env": "env",
+			"commands": [
+				"cd lbm-relighting",
+				"uv run python app.py"
+			]
+		}
+	]
+}
+
