@@ -12,7 +12,7 @@
 		{
 			"name": "Cloning repository",
 			"commands": [
-				"git clone https://huggingface.co/spaces/jasperai/LBM_relighting.git lbm-relighting"
+				"git clone https://huggingface.co/spaces/jasperai/LBM_relighting lbm-relighting"
 			]
 		},
 		{
