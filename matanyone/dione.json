@@ -30,11 +30,16 @@
     ],
     "start": [
         {
-            "name": "Running 'run-applio.bat'",
+            "name": "Running MatAnyone",
             "catch": "6969",
+            "env": {
+                "name": "env",
+                "type": "uv",
+                "version": "3.8"
+            },
             "commands": [
                 "cd matanyone/hugging_face",
-                "uv run app.py"
+                "python app.py"
             ]
         }
     ]
