@@ -1,9 +1,12 @@
 {
   "dependencies": {
-    "git": { "version": "latest" },
-    "uv": { "version": "latest" }
+    "git": {
+      "version": "latest"
+    },
+    "uv": {
+      "version": "latest"
+    }
   },
-  
   "installation": [
     {
       "name": "Cloning ComfyUI repository",
@@ -13,7 +16,10 @@
     },
     {
       "name": "Installing PyTorch and Python dependencies",
-      "env": { "name": ".venv", "version": "3.10" },
+      "env": {
+        "name": ".venv",
+        "version": "3.10"
+      },
       "commands": [
         "cd ComfyUI",
         "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install pip",
@@ -30,17 +36,30 @@
       ]
     }
   ],
-  
   "start": [
     {
-      "name": "Starting ComfyUI",
+      "name": "Default Start",
       "catch": "8188",
       "env": ".venv",
       "commands": [
         "cd ComfyUI",
         "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && python main.py --listen 127.0.0.1 --port 8188 --disable-auto-launch"
       ]
+    },
+    {
+      "name": "Start with Params",
+      "catch": "8288",
+      "env": ".venv",
+      "steps": [
+        {
+          "name": "Starting ComfyUI",
+          "commands": [
+            "cd ComfyUI",
+            "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\"",
+            { "command": "python main.py --port 8288", "customizable": true }
+        ]
+        }
+    ]
     }
   ]
-
-} 
+}
