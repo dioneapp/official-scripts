@@ -1,0 +1,51 @@
+{
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        },
+        "uv": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/nari-labs/dia app"
+            ]
+        },
+        {
+            "name": "Installing dependencies",
+            "env": {
+                "name": "env",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd app",
+                "uv pip install -e ."
+            ]
+        },
+        {
+            "name": "Installing torch",
+            "env": "env",
+            "commands": [
+                "cd app",
+                { "platform": "windows", "command": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128" },
+                { "platform": "linux",   "command": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128" },
+                { "platform": "mac",     "command": "uv pip install torch torchvision torchaudio" }
+            ]
+
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting Dia",
+            "catch": "7860",
+            "env": "env",
+            "commands": [
+                "cd app",
+                { "command": "python app.py", "customizable": true }
+            ]
+        }
+    ]
+}
