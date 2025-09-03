@@ -38,7 +38,7 @@
       },
       "commands": [
         "cd Ultimate-TTS-Studio-SUP3R-Edition",
-        "set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128"
+        "set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128"
       ]
     },
     {

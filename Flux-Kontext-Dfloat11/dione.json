@@ -18,7 +18,7 @@
         "git clone https://github.com/SUP3RMASS1VE/FLUX.1-Kontext-Dev-SUP3R.git FLUX.1-Kontext-Dev-SUP3R",
         "cd FLUX.1-Kontext-Dev-SUP3R",
         "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install setuptools",
-        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128",
         "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install -r requirements.txt"
       ]
     }

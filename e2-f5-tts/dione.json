@@ -21,7 +21,7 @@
       },
       "commands": [
         "cd f5-tts",
-        "uv pip install torch torchaudio",
+        "uv pip install torch==2.4.0 torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cu128",
         "uv pip install -e ."
       ]
     }

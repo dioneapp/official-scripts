@@ -24,7 +24,7 @@
         "cd RuinedFooocus",
         "uv pip install pip setuptools wheel",
         "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && uv pip install -r pip/modules.txt",
-        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128",
         "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && set \"TRANSFORMERS_CACHE=%cd%\\.\\.cache\" && uv pip install -r requirements_versions.txt"
       ]
     }

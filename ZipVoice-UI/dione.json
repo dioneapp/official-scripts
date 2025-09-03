@@ -19,9 +19,9 @@
       "commands": [
         "cd ZipVoice-UI",
         "uv pip install pip",
-        { "platform": "windows", "command": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128" },
-        { "platform": "linux",   "command": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128" },
-        { "platform": "mac",     "command": "uv pip install torch torchvision torchaudio" },
+        { "platform": "windows", "command": "uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128" },
+        { "platform": "linux",   "command": "uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128" },
+        { "platform": "mac",     "command": "uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0" },
         "uv pip install -r requirements.txt"
       ]
     }
