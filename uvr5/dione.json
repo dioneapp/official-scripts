@@ -1,0 +1,69 @@
+{
+    "requirements": {
+        "gpus": ["nvidia", "amd"],
+        "os": ["windows", "linux", "macos"]
+    },
+    "dependencies": {
+        "git": {
+            "version": "latest"
+        },
+        "ffmpeg": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Cloning UVR5-UI repository",
+            "commands": [
+                "git clone https://github.com/Eddycrack864/UVR5-UI.git app"
+            ]
+        },
+        {
+            "name": "Installing UVR5-UI",
+            "env": {
+                "name": "env",
+                "type": "uv",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd app",
+                {
+                    "platform": "windows",
+                    "gpus": "nvidia",
+                    "command": "uv pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu121"
+                },
+                {
+                    "platform": "linux",
+                    "gpus": "nvidia",
+                    "command": "uv pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu121"
+                },
+                {
+                    "platform": "windows",
+                    "gpus": "amd",
+                    "command": "uv pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu121"
+                },
+                {
+                    "platform": "linux",
+                    "gpus": "amd",
+                    "command": "uv pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu121"
+                },
+                {
+                    "platform": "macos",
+                    "command": "uv pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0"
+                },
+                "uv pip install -r requirements.txt"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting UVR5-UI",
+            "catch": "9999",
+            "env": "env",
+            "commands": [
+                "cd app",
+                "uv run python app.py"
+            ]
+        }
+    ]
+}
