@@ -1,0 +1,53 @@
+{
+    "requirements": {
+        "gpus": [],
+        "os": ["windows"]
+    },
+    "dependencies": {
+        "git": { "version": "latest" },
+        "uv": { "version": "latest" },
+        "build_tools": { "version": "latest" }
+    },
+    "installation": [
+        {
+            "name": "Cloning FooocusPlus",
+            "commands": [
+                "git clone https://github.com/DavidDragonsage/FooocusPlus.git FooocusPlus",
+                "cd FooocusPlus",
+                "git submodule update --init --recursive"
+            ]
+        },
+        {
+            "name": "Creating environment and installing dependencies",
+            "env": {
+                "name": "env",
+                "type": "uv",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd FooocusPlus",
+                "uv run python -m ensurepip --upgrade",
+                "uv run python -m pip install -U pip setuptools wheel",
+                "powershell -Command \"(Get-Content requirements_versions.txt) -replace 'onnx-graphsurgeon==0.3.27','onnx-graphsurgeon==0.3.26' | Set-Content requirements_versions.txt\"",
+                "uv pip install --extra-index-url https://pypi.ngc.nvidia.com -r requirements_versions.txt",
+                "uv run python -m pip install -U pygit2==1.18.0"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting FooocusPlus",
+            "catch": "7865",
+            "env": {
+                "name": "env",
+                "type": "uv",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd FooocusPlus",
+                "uv run python entry_with_update.py --listen 0.0.0.0 --port 7865"
+            ]
+        }
+    ]
+}
+
