@@ -1,0 +1,96 @@
+{
+  "requirements": {
+    "gpus": ["nvidia", "amd"],
+    "os": ["windows", "linux"]
+  },
+  "dependencies": {
+    "git": { "version": "latest" },
+    "uv": { "version": "latest" },
+    "ffmpeg": { "version": "latest" },
+    "build_tools": { "version": "latest" },
+    "node": { "version": "latest" }
+  },
+  "installation": [
+    {
+      "name": "Clone ai-toolkit repository",
+      "commands": [
+        "git clone https://github.com/ostris/ai-toolkit.git ai-toolkit-src"
+      ]
+    },
+    {
+      "name": "Install PyTorch (NVIDIA CUDA 12.4)",
+      "env": { "name": "env", "type": "uv", "version": "3.10" },
+      "commands": [
+        {
+          "platform": "windows",
+          "gpus": "nvidia",
+          "command": "cd ai-toolkit-src && pip install --extra-index-url https://download.pytorch.org/whl/cu124 torch torchvision torchaudio"
+        },
+        {
+          "platform": "linux",
+          "gpus": "nvidia",
+          "command": "cd ai-toolkit-src && pip install --extra-index-url https://download.pytorch.org/whl/cu124 torch torchvision torchaudio"
+        }
+      ]
+    },
+    {
+      "name": "Install PyTorch (AMD ROCm 6.2)",
+      "env": "env",
+      "commands": [
+        {
+          "platform": "linux",
+          "gpus": "amd",
+          "command": "cd ai-toolkit-src && pip install --index-url https://download.pytorch.org/whl/rocm6.2 torch torchvision torchaudio"
+        }
+      ]
+    },
+    {
+      "name": "Install ai-toolkit dependencies",
+      "env": "env",
+      "commands": [
+        "cd ai-toolkit-src",
+        "uv pip install gradio devicetorch",
+        "uv pip install -r requirements.txt",
+        "uv pip install hf_xet"
+      ]
+    }
+  ],
+  "start": [
+    {
+      "name": "Run UI",
+      "catch": "8675",
+      "env": "env",
+      "commands": [
+        "cd ai-toolkit-src/ui",
+        "set NODE_ENV=production && npm run build_and_start"
+      ]
+    },
+    {
+      "name": "Run UI with parameters",
+      "catch": "8675",
+      "env": "env",
+      "commands": [
+        "cd ai-toolkit-src",
+        { "command": "set NODE_ENV=production && npm run build_and_start", "customizable": true }
+      ]
+    },
+    {
+      "name": "Run training from config",
+      "env": "env",
+      "steps": [
+        {
+          "name": "Switch to repository",
+          "commands": ["cd ai-toolkit-src"]
+        },
+        {
+          "name": "Launch training",
+          "commands": [
+            { "command": "uv run run.py config/your_config.yml", "customizable": true }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
