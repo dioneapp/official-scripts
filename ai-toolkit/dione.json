@@ -6,8 +6,6 @@
   "dependencies": {
     "git": { "version": "latest" },
     "uv": { "version": "latest" },
-    "ffmpeg": { "version": "latest" },
-    "build_tools": { "version": "latest" },
     "node": { "version": "latest" }
   },
   "installation": [
