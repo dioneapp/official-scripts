@@ -18,7 +18,7 @@
             "catch": "5678",
             "commands": [
                 "cd app",
-                "n8n start"
+                "npx n8n start"
             ]
         }
     ]
