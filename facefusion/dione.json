@@ -16,6 +16,12 @@
     },
     "installation": [
         {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/facefusion/facefusion facefusion"
+            ]
+        },
+        {
             "name": "Installing FaceFusion",
             "env": {
                 "name": "env",
@@ -23,7 +29,6 @@
                 "version": "3.12"
             },
             "commands": [
-                "git clone https://github.com/facefusion/facefusion facefusion",
                 "cd facefusion",
                 { "platform": "linux", "gpus": "amd", "command": "python install.py --onnxruntime rocm" },
                 { "platform": "windows", "gpus": "amd", "command": "python install.py --onnxruntime directml" },
