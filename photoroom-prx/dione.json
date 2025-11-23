@@ -1,0 +1,47 @@
+{
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/PierrunoYT/photoroom-prx-local.git app"
+            ]
+        },
+        {
+            "name": "Installing dependencies",
+            "env": {
+                "name": "venv",
+                "type": "uv",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd app",
+                "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124",
+                "uv pip install --upgrade git+https://github.com/huggingface/diffusers.git",
+                "uv pip install --upgrade transformers"
+            ]
+        },
+        {
+            "name": "Installing requirements",
+            "env": {
+                "name": "venv",
+                "type": "uv",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd app",
+                "uv pip install -r requirements.txt"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting photoroom-prx",
+            "catch": "7860",
+            "env": "venv",
+            "commands": [
+                "cd app",
+                "uv run app.py"
+            ]
+        }
+    ]
+}
