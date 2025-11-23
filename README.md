@@ -12,7 +12,7 @@
 We welcome your pull request! Please follow these guidelines to ensure a smooth contribution process:
 
 - Create a folder named after your script.
-- Inside that folder, include a `dione.json` file as described in our [developer documentation](https://docs.getdione.app/developers/making-a-script).
+- Inside that folder, include a `dione.json` file as described in our [developer documentation](https://docs.getdione.app/developers/making-a-script), you can use the `template.json` as a reference.
 
 Need more help? Join our [Discord](https://getdione.app/discord) server.
 
