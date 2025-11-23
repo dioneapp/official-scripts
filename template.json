@@ -1,0 +1,48 @@
+{
+    "requirements": {
+        "gpus": [
+            "gpu requirement (nvidia, amd, etc.)"
+        ],
+        "os": [
+            "os requirement (windows, linux, macos)"
+        ]
+    },
+    "dependencies": {
+        "dependency": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "step name",
+            "commands": [
+                "command"
+            ]
+        },
+        {
+            "name": "step name",
+            "env": {
+                "name": "env name",
+                "type": "env type (uv or conda)",
+                "version": "env version (python version)"
+            },
+            "commands": [
+                {
+                    "platform": "platform (windows, linux, macos)",
+                    "gpus": "gpus (nvidia, amd, etc.)",
+                    "command": "command"
+                }
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "step name",
+            "catch": "port to catch (should be a number)",
+            "env": "env name",
+            "commands": [
+                "command"
+            ]
+        }
+    ]
+}
