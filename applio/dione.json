@@ -9,6 +9,9 @@
       },
       "uv": {
         "version": "latest"
+      },
+      "build_tools": {
+        "version": "latest"
       }
     },
     "installation": [
