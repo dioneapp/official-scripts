@@ -2,19 +2,27 @@
     "installation": [
         {
             "name": "Creating environment",
-            "env": "env",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.11"
+            },
             "commands": [
-                "uv pip install open-webui"
+                "pip install open-webui"
             ]
         }
     ],
     "start": [
         {
             "name": "Starting open-webui",
-            "env": "env",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.11"
+            },
             "catch": "8080",
             "commands": [
-               "uvx --python 3.11 open-webui@latest serve"
+                "open-webui serve --port 8080 --host 127.0.0.1"
             ]
         }
     ]
