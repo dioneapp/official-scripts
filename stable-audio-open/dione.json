@@ -34,7 +34,7 @@
         "env": "env",
         "commands": [
           "cd stable-audio-tools",
-          "uv run run_gradio.py --pretrained-name cocktailpeanut/oiduaelbats --share"
+          "python run_gradio.py --pretrained-name cocktailpeanut/oiduaelbats --share"
         ]
       }
     ]
