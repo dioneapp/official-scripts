@@ -1,0 +1,69 @@
+{
+    "dependencies": {
+        "node": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Cloning repository",
+            "commands": [
+                "git clone https://github.com/caviraOSS/pagelm.git app"
+            ]
+        },
+        {
+            "name": "Installing backend dependencies",
+            "commands": [
+                "cd app",
+                "cd backend",
+                "npm install --force"
+            ]
+        },
+        {
+            "name": "Installing frontend dependencies",
+            "commands": [
+                "cd app",
+                "cd frontend",
+                "npm install --force"
+            ]
+        },
+        {
+            "name": "Install nodemon",
+            "commands": [
+                "npm install -g nodemon"
+            ]
+        },
+        {
+            "name": "Creating environment file",
+            "commands": [
+                "cd app",
+                "copy .env.example .env"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Starting backend",
+            "steps": [
+                {
+                    "name": "Starting backend",
+                    "parallel": true,
+                    "commands": [
+                        "cd app",
+                        "cd backend",
+                        "npm run dev"
+                    ]
+                },
+                {
+                    "name": "Starting frontend",
+                    "catch": "5173",
+                    "commands": [
+                        "cd app",
+                        "cd frontend",
+                        "npm run dev"
+                    ]
+                }
+            ]
+        }
+    ]
+}
