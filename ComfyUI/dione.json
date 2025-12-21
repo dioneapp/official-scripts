@@ -21,11 +21,18 @@
         "version": "3.10"
       },
       "commands": [
-        "cd ComfyUI",
-        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install pip",
-        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu129",
-        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install -r requirements.txt",
-        "set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install GitPython pyyaml"
+        {
+          "platform": "mac",
+          "command": "cd ComfyUI && set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install pip && uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 && uv pip install -r requirements.txt && uv pip install GitPython pyyaml"
+        },
+        {
+          "platform": "windows",
+          "command": "cd ComfyUI && set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install pip && uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu129 && uv pip install -r requirements.txt && uv pip install GitPython pyyaml"
+        },
+        {
+          "platform": "linux",
+          "command": "cd ComfyUI && set \"HF_HUB_CACHE=%cd%\\.\\.cache\" && set \"HF_HOME=%cd%\\.\\.cache\" && uv pip install pip && uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu129 && uv pip install -r requirements.txt && uv pip install GitPython pyyaml"
+        }
       ]
     },
     {
