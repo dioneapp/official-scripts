@@ -10,7 +10,40 @@
   "installation": [
     {
       "name": "Cloning F5-TTS repository",
-      "commands": ["git clone https://github.com/SWivid/F5-TTS.git f5-tts"]
+      "commands": [
+        "git clone https://github.com/SWivid/F5-TTS.git f5-tts"
+      ]
+    },
+    {
+      "name": "Installing PyTorch",
+      "env": {
+        "name": "f5-tts-env",
+        "version": "3.10",
+        "type": "uv"
+      },
+      "commands": [
+        "cd f5-tts",
+        {
+          "gpus": "nvidia",
+          "command": "pip install torch==2.8.0+cu128 torchaudio==2.8.0+cu128 --extra-index-url https://download.pytorch.org/whl/cu128"
+        },
+        {
+          "gpus": "amd",
+          "command": "pip install torch==2.5.1+rocm6.2 torchaudio==2.5.1+rocm6.2 --extra-index-url https://download.pytorch.org/whl/rocm6.2"
+        },
+        {
+          "gpus": "intel",
+          "command": "pip install torch torchaudio --index-url https://download.pytorch.org/whl/test/xpu"
+        },
+        {
+          "gpus": "apple",
+          "command": "pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu"
+        },
+        {
+          "gpus": "none",
+          "command": "pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu"
+        }
+      ]
     },
     {
       "name": "Setting up Python environment and installing F5-TTS",
@@ -21,7 +54,6 @@
       },
       "commands": [
         "cd f5-tts",
-        "uv pip install torch==2.4.0 torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cu128",
         "uv pip install -e ."
       ]
     }
