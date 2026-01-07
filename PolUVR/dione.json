@@ -1,0 +1,85 @@
+{
+    "dependencies": {
+        "ffmpeg": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Clone Repository",
+            "commands": [
+                "git clone https://github.com/Bebra777228/PolUVR.git"
+            ]
+        },
+        {
+            "name": "Install Dependencies",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd PolUVR",
+                "pip install poetry",
+                "poetry update onnx-weekly UVR_resources",
+                {
+                    "gpus": "nvidia",
+                    "command": "poetry install --extras \"gpu\""
+                },
+                {
+                    "gpus": "amd",
+                    "command": "poetry install --extras \"cpu\""
+                },
+                {
+                    "gpus": "none",
+                    "command": "poetry install --extras \"cpu\""
+                },
+                {
+                    "platform": "macos",
+                    "command": "poetry install --extras \"cpu\""
+                }
+            ]
+        },
+        {
+            "name": "Check Environment",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd PolUVR",
+                "PolUVR --env_info"
+            ]
+        },
+        {
+            "name": "Install Torch (Only on GPU mode)",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.10"
+            },
+            "commands": [
+                {
+                    "gpus": "nvidia",
+                    "command": "pip uninstall torch onnxruntime -y && pip cache purge && pip install --force-reinstall torch torchvision torchaudio && pip install --force-reinstall onnxruntime-gpu"
+                }
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Start Application",
+            "catch": 7860,
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.10"
+            },
+            "commands": [
+                "cd PolUVR",
+                "PolUVR-app"
+            ]
+        }
+    ]
+}
