@@ -1,0 +1,85 @@
+{
+    "requirements": {
+        "gpus": [
+            "nvidia"
+        ],
+        "os": [
+            "windows",
+            "linux"
+        ]
+    },
+    "installation": [
+        {
+            "name": "Clone Repository",
+            "commands": [
+                "git clone https://github.com/francescofugazzi/ml-sharp-pinokio.git",
+                "cd ml-sharp-pinokio",
+                "git clone https://github.com/apple/ml-sharp app/ml-sharp"
+            ]
+        },
+        {
+            "name": "Install Torch (nvidia-only)",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.11"
+            },
+            "commands": [
+                "pip install uv",
+                {
+                    "platform": "windows",
+                    "gpus": "nvidia",
+                    "command": "uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128"
+                }
+            ]
+        },
+        {
+            "name": "Install wheels",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.11"
+            },
+            "commands": [
+                "cd ml-sharp-pinokio/app/wheels",
+                {
+                    "platform": "windows",
+                    "gpus": "nvidia",
+                    "command": "uv pip install gsplat-1.5.3-cp311-cp311-win_amd64.whl --no-deps"
+                },
+                {
+                    "platform": "linux",
+                    "command": "uv pip install gsplat-1.5.3-cp311-cp311-linux_x86_64.whl --no-deps"
+                }
+            ]
+        },
+        {
+            "name": "Install Dependencies",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.11"
+            },
+            "commands": [
+                "cd ml-sharp-pinokio/app/ml-sharp",
+                "uv pip install -r requirements.txt",
+                "uv pip install gradio==6.2.0",
+                "uv pip install ."
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Start Application",
+            "env": {
+                "name": "env",
+                "type": "conda",
+                "version": "3.11"
+            },
+            "catch": "7860",
+            "commands": [
+                "cd ml-sharp-pinokio/app && python app.py"
+            ]
+        }
+    ]
+}
