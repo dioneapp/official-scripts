@@ -1,0 +1,105 @@
+{
+    "requirements": {
+        "gpus": [
+            "nvidia"
+        ],
+        "os": [
+            "windows",
+            "linux"
+        ]
+    },
+    "dependencies": {
+        "git_lfs": {
+            "version": "latest"
+        }
+    },
+    "installation": [
+        {
+            "name": "Clone Studio Repository",
+            "commands": [
+                {
+                    "platform": "windows",
+                    "command": "git clone https://github.com/BazedFrog/SongGeneration-Studio.git _studio_tmp && xcopy /E /I /Y _studio_tmp\\* . && rmdir /S /Q _studio_tmp"
+                },
+                {
+                    "platform": "linux",
+                    "command": "git clone https://github.com/BazedFrog/SongGeneration-Studio.git _studio_tmp && cp -R _studio_tmp/* . && rm -rf _studio_tmp"
+                }
+            ]
+        },
+        {
+            "name": "Clone Tencent's Repository",
+            "commands": [
+                "git clone https://github.com/tencent-ailab/SongGeneration app"
+            ]
+        },
+        {
+            "name": "Download runtime",
+            "env": {
+                "name": "venv",
+                "type": "uv",
+                "version": "3.10"
+            },
+            "commands": [
+                "uv pip install huggingface_hub",
+                "huggingface-cli download lglg666/SongGeneration-Runtime --local-dir app --local-dir-use-symlinks False"
+            ]
+        },
+        {
+            "name": "Override Tencent's requirements",
+            "env": {
+                "name": "venv",
+                "type": "uv",
+                "version": "3.10"
+            },
+            "commands": [
+                "python -c \"import shutil, os; fs = ['requirements.txt', 'requirements_nodeps.txt', 'main.py', 'generation.py', 'model_server.py', 'models.py', 'gpu.py', 'config.py', 'schemas.py', 'sse.py', 'timing.py']; [shutil.copy(fs_item, f'app/{fs_item}') for fs_item in fs if os.path.exists(fs_item)];\""
+            ]
+        },
+        {
+            "name": "Install PyTorch",
+            "env": {
+                "name": "venv",
+                "type": "uv",
+                "version": "3.10"
+            },
+            "commands": [
+                "uv pip install pip",
+                {
+                    "platform": "windows",
+                    "command": "uv pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cu128"
+                },
+                {
+                    "platform": "linux",
+                    "command": "uv pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cu128"
+                }
+            ]
+        },
+        {
+            "name": "Install requirements",
+            "env": {
+                "name": "venv",
+                "type": "uv",
+                "version": "3.10"
+            },
+            "commands": [
+                "uv pip install -r requirements.txt",
+                "uv pip install -r requirements_nodeps.txt --no-deps"
+            ]
+        }
+    ],
+    "start": [
+        {
+            "name": "Start SongGeneration Studio",
+            "env": {
+                "name": "venv",
+                "type": "uv",
+                "version": "3.10"
+            },
+            "catch": 7860,
+            "commands": [
+                "python main.py --host 127.0.0.1 --port 7860"
+            ]
+        }
+    ]
+}
